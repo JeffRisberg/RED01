@@ -57,8 +57,8 @@ public class Main {
         }
 
         // Dump all keys
-        Set<String> list = jedis.keys("*");
-        Iterator iter1 = list.iterator();
+        Set<String> keyList = jedis.keys("*");
+        Iterator iter1 = keyList.iterator();
         while (iter1.hasNext()) {
             Object key = iter1.next();
             System.out.println("Stored key " + key);
