@@ -1,63 +1,58 @@
 package com.incra;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.incra.config.ArchaiusAppConfig;
+import com.incra.config.RedisConfig;
 import com.incra.model.JobDescription;
-import redis.clients.jedis.Jedis;
+import com.incra.service.RedisClient;
 
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.*;
-
 /**
- * Created by jeff on 11/29/15.
+ * @author Jeff Risberg
+ * @since 11/29/15
  */
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        Jedis jedis = new Jedis("52.27.1.250", 6379);
-        //jedis.auth("password");
-        System.out.println("Connected to Redis");
 
-        jedis.set("foo", "bar");
-        String fooValue = jedis.get("foo");
+        ArchaiusAppConfig appConfig = new ArchaiusAppConfig();
+        RedisConfig redisConfig = new RedisConfig(appConfig, "redis");
+        RedisClient redis = new RedisClient(redisConfig);
+        
+        redis.set("foo", "bar");
+        String fooValue = redis.get("foo");
         System.out.println(fooValue);
 
-        jedis.zadd("sose", 0, "car");
-        jedis.zadd("sose", 0, "bike");
-        Set<String> sose = jedis.zrange("sose", 0, -1);
+        redis.zadd("sose", 0, "car");
+        redis.zadd("sose", 0, "bike");
+        Set<String> sose = redis.zrange("sose", 0, -1);
 
         List<JobDescription> jobs = new ArrayList<JobDescription>();
-        {
-            JobDescription job;
 
-            job = new JobDescription(1, "alpha", "s3://xyz14", "java -cp", 10);
-            jobs.add(job);
+        jobs.add(new JobDescription(1, "alpha", "s3://xyz14", "java -cp", 10));
 
-            job = new JobDescription(2, "beta", "s3://def22", "java -cp", 5);
-            jobs.add(job);
+        jobs.add(new JobDescription(2, "beta", "s3://def22", "java -cp", 5));
 
-            job = new JobDescription(3, "gamma", "s3://dwer77", "java -cp", 7);
-            jobs.add(job);
-        }
+        jobs.add(new JobDescription(3, "gamma", "s3://dwer77", "java -cp", 7));
 
         // Populate jobs
         ObjectMapper objectMapper = new ObjectMapper();
 
-        jedis.del("jobs");
+        redis.del("jobs");
 
         for (JobDescription job : jobs) {
             String jobJson = objectMapper.writeValueAsString(job);
 
-            jedis.set("job:" + job.getId(), jobJson);
-            jedis.lpush("jobs", jobJson);
+            redis.set("job:" + job.getId(), jobJson);
+            redis.lpush("jobs", jobJson);
         }
 
         // Dump all keys
-        Set<String> keyList = jedis.keys("*");
+        Set<String> keyList = redis.keys("*");
         Iterator iter1 = keyList.iterator();
         while (iter1.hasNext()) {
             Object key = iter1.next();
@@ -65,10 +60,10 @@ public class Main {
         }
 
         // Dump all jobs
-        Long length = jedis.llen("jobs");
+        Long length = redis.llen("jobs");
         System.out.println("There are " + length + " jobs");
 
-        List<String> values = jedis.lrange("jobs", 0, 150);
+        List<String> values = redis.lrange("jobs", 0, 150);
         Iterator iter2 = values.iterator();
         while (iter2.hasNext()) {
             String value = (String) iter2.next();
@@ -78,5 +73,4 @@ public class Main {
             System.out.println(job);
         }
     }
-
 }
