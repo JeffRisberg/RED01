@@ -1,5 +1,8 @@
 package com.incra.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * @author Jeff Risberg
  * @since 11/30/15
@@ -10,16 +13,20 @@ public class JobDescription {
     protected String url;
     protected String command;
     protected int priority;
+    protected Set<JobParameter> parameters;
 
     public JobDescription() {
+        this.parameters = new HashSet<JobParameter>();
     }
 
-    public JobDescription(Integer id, String name, String url, String command, int priority) {
+    public JobDescription(Integer id, String name, String url, String command, int priority, Set parameters) {
+        this();
         this.id = id;
         this.name = name;
         this.url = url;
         this.command = command;
         this.priority = priority;
+        this.parameters = parameters;
     }
 
     public Integer getId() {
@@ -62,6 +69,14 @@ public class JobDescription {
         this.priority = priority;
     }
 
+    public Set<JobParameter> getParameters() {
+        return parameters;
+    }
+
+    public void setParameters(Set<JobParameter> parameters) {
+        this.parameters = parameters;
+    }
+
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();
@@ -73,6 +88,8 @@ public class JobDescription {
         sb.append(name);
         sb.append(", priority=");
         sb.append(priority);
+        sb.append(", parameters=");
+        sb.append(parameters);
         sb.append("]");
 
         return sb.toString();

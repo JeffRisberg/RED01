@@ -4,12 +4,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.incra.config.ArchaiusAppConfig;
 import com.incra.config.RedisConfig;
 import com.incra.model.JobDescription;
+import com.incra.model.JobParameter;
 import com.incra.service.RedisClient;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author Jeff Risberg
@@ -22,7 +20,7 @@ public class Main {
         ArchaiusAppConfig appConfig = new ArchaiusAppConfig();
         RedisConfig redisConfig = new RedisConfig(appConfig, "redis");
         RedisClient redis = new RedisClient(redisConfig);
-        
+
         redis.set("foo", "bar");
         String fooValue = redis.get("foo");
         System.out.println(fooValue);
@@ -33,11 +31,17 @@ public class Main {
 
         List<JobDescription> jobs = new ArrayList<JobDescription>();
 
-        jobs.add(new JobDescription(1, "alpha", "s3://xyz14", "java -cp", 10));
+        Set params1 = new HashSet();
+        jobs.add(new JobDescription(1, "alpha", "s3://xyz14", "java -cp", 10, params1));
 
-        jobs.add(new JobDescription(2, "beta", "s3://def22", "java -cp", 5));
+        Set params2 = new HashSet();
+        params2.add(new JobParameter("x", 5));
+        jobs.add(new JobDescription(2, "beta", "s3://def22", "java -cp", 5, params2));
 
-        jobs.add(new JobDescription(3, "gamma", "s3://dwer77", "java -cp", 7));
+        Set params3 = new HashSet();
+        params3.add(new JobParameter("x", 5));
+        params3.add(new JobParameter("y", "Example"));
+        jobs.add(new JobDescription(3, "gamma", "s3://dwer77", "java -cp", 7, params3));
 
         // Populate jobs
         ObjectMapper objectMapper = new ObjectMapper();
