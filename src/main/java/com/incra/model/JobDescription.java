@@ -79,7 +79,7 @@ public class JobDescription {
 
     @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         sb.append("JobDescription[");
         sb.append("id=");
