@@ -1,6 +1,6 @@
-package com.incra.service;
+package com.slg.service;
 
-import com.incra.config.RedisConfig;
+import com.slg.config.RedisConfig;
 import redis.clients.jedis.Jedis;
 
 /**

@@ -1,11 +1,15 @@
-package com.incra.config;
+package com.slg.config;
 
 import com.netflix.config.ConcurrentCompositeConfiguration;
 import com.netflix.config.ConfigurationManager;
 import com.netflix.config.DynamicPropertyFactory;
+import org.apache.commons.configuration.AbstractConfiguration;
 
 /**
  * App config backed by Archaius.
+ *
+ * @author Jeff Risberg
+ * @since 12/04/15
  */
 public class ArchaiusAppConfig implements AppConfig {
     public ArchaiusAppConfig() {
@@ -39,6 +43,7 @@ public class ArchaiusAppConfig implements AppConfig {
      * @param value the specified value.
      */
     public void setOverrideProperty(final String key, final Object value) {
+        //AbstractConfiguration x = ConfigurationManager.getConfigInstance();
         ((ConcurrentCompositeConfiguration) ConfigurationManager.getConfigInstance()).setOverrideProperty(key, value);
     }
 }

@@ -1,4 +1,4 @@
-package com.incra.model;
+package com.slg.model;
 
 import java.util.HashSet;
 import java.util.Set;

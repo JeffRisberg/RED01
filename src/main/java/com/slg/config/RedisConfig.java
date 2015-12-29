@@ -1,4 +1,4 @@
-package com.incra.config;
+package com.slg.config;
 
 /**
  * Redis configuration

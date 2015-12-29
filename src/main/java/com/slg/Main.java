@@ -1,11 +1,11 @@
-package com.incra;
+package com.slg;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.incra.config.ArchaiusAppConfig;
-import com.incra.config.RedisConfig;
-import com.incra.model.JobDescription;
-import com.incra.model.JobParameter;
-import com.incra.service.RedisClient;
+import com.slg.config.ArchaiusAppConfig;
+import com.slg.config.RedisConfig;
+import com.slg.model.JobDescription;
+import com.slg.model.JobParameter;
+import com.slg.service.RedisClient;
 
 import java.util.*;
 

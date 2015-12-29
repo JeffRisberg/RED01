@@ -1,9 +1,12 @@
-package com.incra.config;
+package com.slg.config;
 
 import com.google.common.annotations.VisibleForTesting;
 
 /**
  * Application Config
+ *
+ * @author Jeff Risberg
+ * @since 12/04/15
  */
 public interface AppConfig {
     String getString(String key, String defaultValue);

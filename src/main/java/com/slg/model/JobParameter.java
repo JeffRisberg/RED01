@@ -1,4 +1,4 @@
-package com.incra.model;
+package com.slg.model;
 
 /**
  * @author Jeff Risberg
