@@ -10,6 +10,9 @@ public class RedisConfig {
     private final AppConfig appConfig;
     private final String prefix;
 
+    /**
+     * Constructor
+     */
     public RedisConfig(final AppConfig appConfig, final String prefix) {
         this.appConfig = appConfig;
         this.prefix = prefix;

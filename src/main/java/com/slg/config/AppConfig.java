@@ -9,6 +9,7 @@ import com.google.common.annotations.VisibleForTesting;
  * @since 12/04/15
  */
 public interface AppConfig {
+
     String getString(String key, String defaultValue);
 
     int getInt(String key, int defaultValue);
@@ -20,8 +21,7 @@ public interface AppConfig {
     boolean getBoolean(String key, boolean defaultValue);
 
     /**
-     * Sets an instance-level override. This will trump everything including
-     * dynamic properties and system properties. Useful for tests.
+     * Sets an instance-level override.
      *
      * @param key   the specified key.
      * @param value the specified value.
