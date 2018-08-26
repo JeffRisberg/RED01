@@ -14,13 +14,19 @@
     </build>
 
     <properties>
-        <archaius.version>0.6.3</archaius.version>
+        <archaius.version>0.7.6</archaius.version>
         <guava.version>19.0</guava.version>
         <jackson.version>2.6.3</jackson.version>
         <jedis.version>2.6.2</jedis.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.20</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>com.netflix.archaius</groupId>
             <artifactId>archaius-core</artifactId>

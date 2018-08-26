@@ -1,5 +1,7 @@
 package com.slg.model;
 
+import lombok.Data;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -7,6 +9,7 @@ import java.util.Set;
  * @author Jeff Risberg
  * @since 11/30/15
  */
+@Data
 public class JobDescription {
     protected Integer id;
     protected String name;
@@ -27,71 +30,5 @@ public class JobDescription {
         this.command = command;
         this.priority = priority;
         this.parameters = parameters;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getCommand() {
-        return command;
-    }
-
-    public void setCommand(String command) {
-        this.command = command;
-    }
-
-    public int getPriority() {
-        return priority;
-    }
-
-    public void setPriority(int priority) {
-        this.priority = priority;
-    }
-
-    public Set<JobParameter> getParameters() {
-        return parameters;
-    }
-
-    public void setParameters(Set<JobParameter> parameters) {
-        this.parameters = parameters;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-
-        sb.append("JobDescription[");
-        sb.append("id=");
-        sb.append(id);
-        sb.append(", name=");
-        sb.append(name);
-        sb.append(", priority=");
-        sb.append(priority);
-        sb.append(", parameters=");
-        sb.append(parameters);
-        sb.append("]");
-
-        return sb.toString();
     }
 }
