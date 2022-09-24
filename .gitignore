@@ -8,3 +8,6 @@
 *.ear
 
 target
+
+.idea/workspace.xml
+.idea/sonarlint
