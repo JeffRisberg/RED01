@@ -45,6 +45,6 @@ public class ArchaiusAppConfig implements AppConfig {
      * @param value the specified value.
      */
     public void setOverrideProperty(final String key, final Object value) {
-        ((ConcurrentCompositeConfiguration) ConfigurationManager.getConfigInstance()).setOverrideProperty(key, value);
+        //((ConcurrentCompositeConfiguration) ConfigurationManager.getConfigInstance()).setOverrideProperty(key, value);
     }
 }

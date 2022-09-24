@@ -16,7 +16,7 @@ public class RedisClient extends Jedis {
         this.redisConfig = redisConfig;
 
         if (redisConfig.getPassword() != null) {
-            this.auth(redisConfig.getPassword());
+            //this.auth(redisConfig.getPassword());
         }
     }
 }
