@@ -16,8 +16,8 @@
     <properties>
         <archaius.version>0.7.6</archaius.version>
         <guava.version>19.0</guava.version>
-        <jackson.version>2.6.3</jackson.version>
         <jedis.version>2.6.2</jedis.version>
+        <jackson.version>2.6.3</jackson.version>
     </properties>
 
     <dependencies>
@@ -44,7 +44,17 @@
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
             <version>${jackson.version}</version>
         </dependency>
     </dependencies>
