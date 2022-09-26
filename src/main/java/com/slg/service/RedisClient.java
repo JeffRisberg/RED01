@@ -1,6 +1,7 @@
 package com.slg.service;
 
 import com.slg.config.RedisConfig;
+import org.apache.commons.lang3.StringUtils;
 import redis.clients.jedis.Jedis;
 
 /**
@@ -15,8 +16,8 @@ public class RedisClient extends Jedis {
         super(redisConfig.getServer(), redisConfig.getPort());
         this.redisConfig = redisConfig;
 
-        if (redisConfig.getPassword() != null) {
-            //this.auth(redisConfig.getPassword());
+        if (StringUtils.isNotBlank(redisConfig.getPassword())) {
+            this.auth(redisConfig.getPassword());
         }
     }
 }

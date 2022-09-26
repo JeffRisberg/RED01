@@ -17,10 +17,15 @@
         <archaius.version>0.7.6</archaius.version>
         <guava.version>19.0</guava.version>
         <jedis.version>2.6.2</jedis.version>
-        <jackson.version>2.12.7</jackson.version>
+        <jackson.version>2.13.4</jackson.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.11</version>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
